@@ -15,12 +15,13 @@ const router = async ()=> {
   const header = null||document.getElementById('header');
   const content = null||document.getElementById('content');
   header.innerHTML = await Header();
-  
+  //obeteniendo el hash despues de la pagina "/","1" o "about"
   let hash = getHash();
   console.log('hash retorna:',hash);
+  //enrutando a la pagina.
   let route = await resolveRoutes(hash);
   console.log('route retorna:',route);
-  console.log(routes[route]);
+  //decide que se inserta  "Home","Character"
   let render = routes[route]? routes[route] : Error404;
   content.innerHTML = await render();
 }
